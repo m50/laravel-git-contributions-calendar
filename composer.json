@@ -38,12 +38,12 @@
     },
     "autoload": {
         "psr-4": {
-            "m50\\GitCalendar": "src"
+            "m50\\GitCalendar\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "m50\\GitCalendar": "tests"
+            "m50\\GitCalendar\\": "tests"
         }
     },
     "scripts": {
