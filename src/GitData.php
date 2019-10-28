@@ -71,9 +71,12 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
      * @param Carbon\Carbon|null $latest_date
      * @return void
      */
-    public function __construct(Collection $data, Carbon $earliest_date = null, Carbon $latest_date = null)
-    {
-        $this->data = $data;
+    public function __construct(
+        Collection $data = null,
+        Carbon $earliest_date = null,
+        Carbon $latest_date = null
+    ) {
+        $this->data = $data ?? collect([1 => [], 2 => [], 3 => [], 4 => [], 5 => [], 6 => [], 7 => []]);
         $this->latest_date = $latest_date ?? now();
         $this->earliest_date = $earliest_date ?? now()->subMonths(12);
         $this->rewind();
