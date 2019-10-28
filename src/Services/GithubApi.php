@@ -12,52 +12,52 @@ class GithubApi implements GitApi
     private $key;
     private $uri;
     /**
-     * $guzzle
+     * The Guzzle Client.
      *
      * @var GuzzleHttp\Client
      */
     protected $guzzle;
     /**
-     * $after
+     * The earliest date to be collecting from.
      *
      * @var Carbon\Carbon
      */
     protected $after;
     /**
-     * $events
+     * A collection of events from response.
      *
      * @var Collection
      */
     protected $events;
     /**
-     * $responseHeaders
+     * An array of response headers from the last request.
      *
      * @var array
      */
     protected $responseHeaders;
     /**
-     * $repos
+     * Collection of all the repos of the Users.
      *
      * @var Collection
      */
     protected $repos;
 
     /**
-     * $user
+     * The user array received. 
      *
      * @var array
      */
     protected $user;
 
     /**
-     * $username
+     * The username of the user to get.
      *
      * @var string
      */
     protected $username;
 
     /**
-     * __construct
+     * The constructor.
      *
      * @param string $username
      * @param string $key
@@ -84,6 +84,12 @@ class GithubApi implements GitApi
         $this->queryUser($this->username);
     }
 
+    /**
+     * Query the user from the username.
+     *
+     * @param string $username
+     * @return self
+     */
     public function queryUser(string $username): self
     {
         $response = $this->guzzle->get("/users/{$username}");
@@ -92,7 +98,7 @@ class GithubApi implements GitApi
     }
 
     /**
-     * queryRepos
+     * Query all of the repositories for for the user.
      *
      * @return self
      */
@@ -111,7 +117,7 @@ class GithubApi implements GitApi
     }
 
     /**
-     * queryCommits
+     * Query all the commits in a repository.
      *
      * @param  string $repo
      * @param  int    $page
@@ -144,7 +150,7 @@ class GithubApi implements GitApi
     }
 
     /**
-     * getCommitCountsByDay
+     * Get the commit counts by day.
      *
      * @return GitData
      */
@@ -182,7 +188,7 @@ class GithubApi implements GitApi
     }
 
     /**
-     * __get
+     * Getter for the data.
      *
      * @param string $name
      * @return mixed
@@ -200,7 +206,7 @@ class GithubApi implements GitApi
     }
 
     /**
-     * getTotalPages
+     * Get total number of pages out of the Link header.
      *
      * @return int
      */

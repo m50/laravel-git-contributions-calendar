@@ -4,16 +4,16 @@ namespace m50\GitCalendar;
 
 use ArrayAccess;
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Traits\Macroable;
 use Iterator;
 
 /**
  * GitData
  * Stores the Count data from the GitApi countables.
- * 
+ *
  * @method void __construct(Collection $data, Carbon $earliest_date = null, Carbon $latest_date = null)
  * @method self merge(GitData $gd)
  * @method array implode()
@@ -85,10 +85,10 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
     /**
      * Merges another GitData set into this one.
      *
-     * @param GitData $gd
+     * @param self $gd
      * @return self
      */
-    public function merge(GitData $gd): self
+    public function merge(self $gd): self
     {
         $events = collect();
         for ($day = 1; $day <= 7; $day++) {
@@ -119,7 +119,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
     }
 
     /**
-     * Alias for toArray();
+     * Alias for toArray().
      *
      * @return array
      */
@@ -149,7 +149,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
         return [
             'data' => $this->data,
             'earliest_date' => $this->earliest_date,
-            'latest_date' => $this->latest_date
+            'latest_date' => $this->latest_date,
         ];
     }
 
@@ -173,6 +173,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
     public static function determineHeatmapColour($count): string
     {
         $heatmapClass = config('contrib-calendar.heatmap-class.zero', 'bg-gray-300');
+
         if ($count >= 1 && $count < 9) {
             $heatmapClass = config('contrib-calendar.heatmap-class.low', 'bg-blue-200');
         } elseif ($count >= 10 && $count < 19) {
@@ -182,6 +183,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
         } elseif ($count >= 30) {
             $heatmapClass = config('contrib-calendar.heatmap-class.very-high', 'bg-blue-800');
         }
+
         return $heatmapClass;
     }
 
@@ -207,6 +209,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
         if ($offset == 'earliest_date' || $offset == 'latest_date') {
             return $this->$offset;
         }
+
         return $this->data[$offset];
     }
 
@@ -222,6 +225,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
         if ($offset == 'earliest_date' || $offset == 'latest_date') {
             $this->$offset = $value;
         }
+
         $this->data[$offset] = $value;
     }
 
@@ -230,7 +234,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
      *
      * @param int|string $offset
      * @return void
-     * 
+     *
      * @throws \Exception Unable to unset a GitData date/time.
      */
     public function offsetUnset($offset)
@@ -275,7 +279,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
      */
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**

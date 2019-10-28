@@ -2,19 +2,19 @@
 
 namespace m50\GitCalendar\Jobs;
 
-use m50\GitCalendar\GitData;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Cache;
+use m50\GitCalendar\GitData;
 
 class CacheEventData implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
     /**
-     * $gitRunners
+     * An array of git api runners.
      *
      * @var array
      */

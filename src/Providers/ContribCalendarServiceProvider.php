@@ -2,9 +2,9 @@
 
 namespace m50\GitCalendar\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use m50\GitCalendar\Services\GithubApi;
 use m50\GitCalendar\Services\GitlabApi;
-use Illuminate\Support\ServiceProvider;
 
 class ContribCalendarServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class ContribCalendarServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/contrib-calendar.php',
+            __DIR__.'/../config/contrib-calendar.php',
             'contrib-calendar'
         );
     }
@@ -42,11 +42,11 @@ class ContribCalendarServiceProvider extends ServiceProvider
             );
         });
         $this->publishes([
-            __DIR__ . '/../config/contrib-calendar.php' => config_path('contrib-calendar.php'),
+            __DIR__.'/../config/contrib-calendar.php' => config_path('contrib-calendar.php'),
         ], 'config');
         $this->publishes([
-            __DIR__ . '/../resources/views' => base_path('resources/views/vendor/contribCalendar'),
+            __DIR__.'/../resources/views' => base_path('resources/views/vendor/contribCalendar'),
         ], 'views');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'contribCalendar');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'contribCalendar');
     }
 }

@@ -12,32 +12,32 @@ class GitlabApi implements GitApi
     private $key;
     private $uri;
     /**
-     * $guzzle
+     * The Guzzle Client.
      *
      * @var GuzzleHttp\Client
      */
     protected $guzzle;
     /**
-     * $after
+     * The earliest date to be collecting from.
      *
      * @var Carbon\Carbon
      */
     protected $after;
     /**
-     * $events
+     * A collection of events from response.
      *
      * @var Collection
      */
     protected $events;
     /**
-     * $responseHeaders
+     * An array of response headers from the last request.
      *
      * @var array
      */
     protected $responseHeaders;
 
     /**
-     * __construct
+     * Constructor.
      *
      * @param string $key
      * @param string $url
@@ -62,7 +62,7 @@ class GitlabApi implements GitApi
     }
 
     /**
-     * queryEvents
+     * Query all the events.
      *
      * @param int $page
      * @return self
@@ -91,7 +91,7 @@ class GitlabApi implements GitApi
     }
 
     /**
-     * getEventCountsByDay
+     * Get the event counts by day.
      *
      * @return array
      */
@@ -126,7 +126,7 @@ class GitlabApi implements GitApi
     }
 
     /**
-     * __get
+     * Getter for the data.
      *
      * @param string $name
      * @return mixed
