@@ -115,7 +115,7 @@ class GitData implements Arrayable, Jsonable, ArrayAccess, Iterator
         if ($gd->latest_date->gt($this->latest_date)) {
             $this->latest_date = $gd->latest_date;
         }
-        
+
         return $this;
     }
 
