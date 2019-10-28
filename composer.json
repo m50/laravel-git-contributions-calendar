@@ -1,0 +1,59 @@
+{
+    "name": "m50/laravel-git-contributions-calendar",
+    "description": "A Blade directive to display a contribution calendar, as found on Github/Gitlab.",
+    "keywords": [
+        "m50",
+        "laravel",
+        "blade",
+        "git",
+        "contributions",
+        "calendar",
+        "laravel-git-contributions-calendar",
+        "cache",
+        "tailwind"
+    ],
+    "homepage": "https://github.com/m50/laravel-git-contributions-calendar",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marisa Clardy",
+            "email": "marisa@clardy.eu",
+            "homepage": "https://clardy.eu",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/contracts": "~5.8|^6.0",
+        "illuminate/support": "~5.8|^6.0",
+        "illuminate/bus": "~5.8|^6.0",
+        "illuminate/queue": "~5.8|^6.0",
+        "illuminate/foundation": "~5.8|^6.0",
+        "nesbot/carbon": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "~3.8.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "m50\\GitCalendar": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "m50\\GitCalendar": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "m50\\GitCalendar\\Providers\\ContribCalendarServiceProvider"
+            ]
+        }
+    }
+}
