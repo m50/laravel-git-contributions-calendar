@@ -3,7 +3,7 @@
 Allows rendering of a calendar in blade with your git contributions.
 
 An example of what it can look like:
-![Screenshot](images/Screenshot.png)
+![Screenshot](images/screenshot.png)
 
 
 ## Install
