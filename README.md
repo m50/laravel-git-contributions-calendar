@@ -1,5 +1,10 @@
 # Render Git contributions from Gitlab and/or Github in a Blade file
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/m50/laravel-git-contributions-calendar.svg?style=flat-square)](https://packagist.org/packages/m50/laravel-git-contributions-calendar)
+[![Build Status](https://img.shields.io/travis/m50/laravel-git-contributions-calendar/master.svg?style=flat-square)](https://travis-ci.org/m50/laravel-git-contributions-calendar)
+[![StyleCI](https://github.styleci.io/repos/217633811/shield?branch=master)](https://github.styleci.io/repos/217633811)
+[![Total Downloads](https://img.shields.io/packagist/dt/m50/laravel-git-contributions-calendar.svg?style=flat-square)](https://packagist.org/packages/m50/laravel-git-contributions-calendar)
+
 Allows rendering of a calendar in blade with your git contributions.
 
 An example of what it can look like:
