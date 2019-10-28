@@ -146,7 +146,7 @@ class GithubApi implements GitApi
                 unset($e['committer']);
                 unset($e['author']);
                 unset($e['parents']);
-                
+
                 return $e;
             });
 
