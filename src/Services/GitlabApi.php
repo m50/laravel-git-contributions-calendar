@@ -56,7 +56,7 @@ class GitlabApi implements GitApi
             'headers' => [
                 'PRIVATE-TOKEN' => $this->key,
                 'Accept' => 'application/json',
-            ]
+            ],
         ]);
         $this->after = Carbon::parse(Carbon::now()->subMonths(12)->toDateString());
     }

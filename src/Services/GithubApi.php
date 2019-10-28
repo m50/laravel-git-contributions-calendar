@@ -78,7 +78,7 @@ class GithubApi implements GitApi
             'headers' => [
                 'Authorization' => "token {$this->key}",
                 'Accept' => 'application/vnd.github.v3+json',
-            ]
+            ],
         ]);
         $this->after = Carbon::parse(Carbon::now()->subMonths(12)->toDateString());
         $this->queryUser($this->username);
@@ -94,6 +94,7 @@ class GithubApi implements GitApi
     {
         $response = $this->guzzle->get("/users/{$username}");
         $this->user = collect(json_decode($response->getBody()->getContents(), true));
+
         return $this;
     }
 
@@ -113,6 +114,7 @@ class GithubApi implements GitApi
             ->map(function ($repo) {
                 return $repo['name'];
             });
+
         return $this;
     }
 
@@ -146,6 +148,7 @@ class GithubApi implements GitApi
                 unset($e['parents']);
                 return $e;
             });
+
         return $this;
     }
 
@@ -202,6 +205,7 @@ class GithubApi implements GitApi
         } elseif ($name == 'headers') {
             return $this->responseHeaders ?? collect();
         }
+
         return $this->$name;
     }
 
@@ -224,6 +228,7 @@ class GithubApi implements GitApi
         })->map(function ($k) {
             return $k[0];
         })->implode('');
+
         return (int) explode('page=', $lastPageLink)[1];
     }
 }
