@@ -4,8 +4,8 @@ namespace m50\GitCalendar;
 
 use ArrayAccess;
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use Iterator;

@@ -4,8 +4,8 @@ namespace m50\GitCalendar\Services;
 
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use m50\GitCalendar\GitData;
 use m50\GitCalendar\Contracts\GitApi;
+use m50\GitCalendar\GitData;
 
 class GithubApi implements GitApi
 {
@@ -43,7 +43,7 @@ class GithubApi implements GitApi
     protected $repos;
 
     /**
-     * The user array received. 
+     * The user array received.
      *
      * @var array
      */
@@ -71,13 +71,13 @@ class GithubApi implements GitApi
         $this->username = $username;
     }
 
-    public function init ()
+    public function init()
     {
         $this->guzzle = new Client([
             'base_uri' => $this->uri,
             'headers' => [
                 'Authorization' => "token {$this->key}",
-                'Accept' => 'application/vnd.github.v3+json'
+                'Accept' => 'application/vnd.github.v3+json',
             ]
         ]);
         $this->after = Carbon::parse(Carbon::now()->subMonths(12)->toDateString());
@@ -104,7 +104,7 @@ class GithubApi implements GitApi
      */
     public function queryRepos(): self
     {
-        if (!isset($this->guzzle)) {
+        if (! isset($this->guzzle)) {
             $this->init();
         }
         $response = $this->guzzle->get("/users/{$this->user['login']}/repos");
@@ -157,7 +157,7 @@ class GithubApi implements GitApi
     public function getEventCountsByDay(): GitData
     {
         $data = collect();
-        foreach($this->queryRepos()->repos as $repo) {
+        foreach ($this->queryRepos()->repos as $repo) {
             $this->queryCommits($repo, 1);
             $totalPages = $this->getTotalPages();
             $data = $data->merge($this->events->map(function ($e) {
@@ -212,7 +212,7 @@ class GithubApi implements GitApi
      */
     private function getTotalPages(): int
     {
-        if (!isset($this->responseHeaders['Link'])) {
+        if (! isset($this->responseHeaders['Link'])) {
             return 1;
         }
         $lastPageLink = collect(explode(',', $this->responseHeaders['Link'][0]))->map(function ($m) {
